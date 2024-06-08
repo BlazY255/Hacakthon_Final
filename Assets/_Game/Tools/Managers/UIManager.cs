@@ -13,6 +13,9 @@ public class UIManager : MonoBehaviour
     public Button useButton;
     public Interactable.InteractableType currentInteractableType;
 
+    public GameObject deathPanel;
+    public GameObject inGamePanel;
+
     [Header("MinigamePanel")] 
     public GameObject pcPanel;
     
@@ -30,6 +33,11 @@ public class UIManager : MonoBehaviour
     {
         useButton.gameObject.SetActive(enable);
         currentInteractableType = type;
+    }
+    public void DeathPanel(bool enable)
+    {
+        deathPanel.SetActive(enable);
+        inGamePanel.SetActive(!enable);
     }
     
     public void UseButtonClicked()

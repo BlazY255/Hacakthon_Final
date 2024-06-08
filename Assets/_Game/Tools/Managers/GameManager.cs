@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,7 +13,6 @@ public class GameManager : MonoBehaviour
 
     [Header("Interaction")] 
     public bool canInteract;
-    public int currentPCId;
     
     void Awake()
     {
@@ -24,11 +24,12 @@ public class GameManager : MonoBehaviour
         }
     }
     
-    public void SetInteractionType(bool enable,Interactable.InteractableType type,int id)
+    public void SetInteractionType(bool enable,Interactable.InteractableType type,int id,bool isLaserPc)
     {
         if (canInteract)
         {
             UIManager.pcPanel.transform.GetComponent<PC_Screen>().currentId = id;
+            UIManager.pcPanel.transform.GetComponent<PC_Screen>().isLaserPc = isLaserPc;
             UIManager.EnableUseButton(enable, type);
         }
     }
@@ -42,6 +43,17 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 1;
         }
+    }
+
+    public void Die()
+    {
+        UIManager.DeathPanel(true);
+        Destroy(PlayerMovementController.gameObject); 
+    }
+
+    public void ResetGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void CloseGame()
     {

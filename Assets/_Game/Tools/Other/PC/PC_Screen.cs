@@ -12,6 +12,7 @@ public class PC_Screen : MonoBehaviour
 
     public CodePanel codePanel;
     public int currentId;
+    public bool isLaserPc;
     
     public float timeToColor;
     
@@ -40,6 +41,7 @@ public class PC_Screen : MonoBehaviour
         codePanel.xInputField.text = "";
         codePanel.yInputField.text = "";
         codePanel.description.text = "";
+        codePanel.isLaserPc = isLaserPc;
 
         // Find the corresponding PlatformData and update the description
         foreach (var data in codePanel.platformDataList)

@@ -7,6 +7,8 @@ public class CodePanel : MonoBehaviour
     public TMP_InputField xInputField;
     public TMP_InputField yInputField;
     public TMP_Text description;
+
+    public bool isLaserPc;
     
     public List<PlatformData> platformDataList;
 
@@ -59,7 +61,7 @@ public class CodePanel : MonoBehaviour
         {
             if (data.XValues.Contains(xValue) && data.YValues.Contains(yValue))
             {
-                GameManager.instance.levelManager.SetPlatformActive(data.PlatformId, true);
+                GameManager.instance.levelManager.SetPlatformActive(data.PlatformId, true, isLaserPc);
                 return;
             }
         }

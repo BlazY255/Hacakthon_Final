@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public List<PlatformClass> Platforms;
+    public List<Laser> lasers;
 
     [System.Serializable]
     public class PlatformClass
@@ -21,8 +22,18 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void SetPlatformActive(int platformId, bool active)
+
+    public void SetPlatformActive(int platformId,bool active,bool isLaserPC)
     {
+        foreach (var laser in lasers)
+        {
+            if(!isLaserPC) break;
+            if (laser.laserId == platformId)
+            {
+                laser.gameObject.SetActive(false);
+            }
+        }
+        
         foreach (var platformClass in Platforms)
         {
             var platform = platformClass.platformList;
