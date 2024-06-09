@@ -8,11 +8,14 @@ TagManager:
   - Ground
   - PC
   - Laser
+  - Bullet
+  - Wall
+  - FinalGate
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 

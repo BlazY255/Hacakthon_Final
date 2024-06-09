@@ -17,19 +17,20 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         // QualitySettings.vSyncCount = 0;
-        //Application.targetFrameRate = 60;
+        Application.targetFrameRate = 60;
         if (instance == null)
         {
             instance = this;
         }
     }
     
-    public void SetInteractionType(bool enable,Interactable.InteractableType type,int id,bool isLaserPc)
+    public void SetInteractionType(bool enable,Interactable.InteractableType type,int id,bool isLaserPc,bool isLastPc)
     {
         if (canInteract)
         {
             UIManager.pcPanel.transform.GetComponent<PC_Screen>().currentId = id;
             UIManager.pcPanel.transform.GetComponent<PC_Screen>().isLaserPc = isLaserPc;
+            UIManager.pcPanel.transform.GetComponent<PC_Screen>().isLastPc = isLastPc;
             UIManager.EnableUseButton(enable, type);
         }
     }
@@ -45,6 +46,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void Win()
+    {
+        UIManager.WinPanel(true);
+    }
+
     public void Die()
     {
         UIManager.DeathPanel(true);
@@ -54,6 +60,11 @@ public class GameManager : MonoBehaviour
     public void ResetGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        
+    }
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MainScreen");
     }
     public void CloseGame()
     {

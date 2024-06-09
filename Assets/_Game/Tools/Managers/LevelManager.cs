@@ -7,6 +7,8 @@ public class LevelManager : MonoBehaviour
     public List<PlatformClass> Platforms;
     public List<Laser> lasers;
 
+    public FinalGate finalGate;
+
     [System.Serializable]
     public class PlatformClass
     {
@@ -23,15 +25,23 @@ public class LevelManager : MonoBehaviour
     }
 
 
-    public void SetPlatformActive(int platformId,bool active,bool isLaserPC)
+    public void SetPlatformActive(int platformId,bool active,bool isLaserPC,bool isLastPC)
     {
+        
         foreach (var laser in lasers)
         {
             if(!isLaserPC) break;
             if (laser.laserId == platformId)
             {
-                laser.gameObject.SetActive(false);
+                laser.gameObject.SetActive(!laser.gameObject.activeSelf);
             }
+        }
+
+        if (platformId == 5 && isLastPC && !isLaserPC)
+        {
+            Debug.Log("Final Gate Opened");
+            finalGate.OpenDoor();
+            
         }
         
         foreach (var platformClass in Platforms)

@@ -13,6 +13,7 @@ public class PC_Screen : MonoBehaviour
     public CodePanel codePanel;
     public int currentId;
     public bool isLaserPc;
+    public bool isLastPc;
     
     public float timeToColor;
     
@@ -34,16 +35,16 @@ public class PC_Screen : MonoBehaviour
             StartCoroutine(MoveScreenDown());
         };
     }
-
-    //screen movement
+    
     private IEnumerator MoveScreenUp()
     {
         codePanel.xInputField.text = "";
         codePanel.yInputField.text = "";
         codePanel.description.text = "";
         codePanel.isLaserPc = isLaserPc;
-
-        // Find the corresponding PlatformData and update the description
+        codePanel.index = currentId;
+        codePanel.isLastPc = isLastPc;
+        
         foreach (var data in codePanel.platformDataList)
         {
             if (data.PlatformId == currentId)

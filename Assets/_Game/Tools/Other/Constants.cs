@@ -12,6 +12,13 @@ public static class Constants
     //Collider Tags
     public static string Player = "Player";
     public static string Ground = "Ground";
+    public static string Wall = "Wall";
+    public static string Laser = "Laser";
     public static string Battery = "Battery";
     
+    //Enemy Tags
+    public static string Bullet = "Bullet";
+    public static string Move = "Move";
+    public static string Shoot = "Shoot";
+
 }

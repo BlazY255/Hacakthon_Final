@@ -28,7 +28,27 @@ public class PlayerMovementController : MonoBehaviour
    
     void Update()
     {
-        Move();
+        float horizontalMovement = _joystick.Horizontal;
+        float verticalMovement = _joystick.Vertical;
+
+        // Apply the movement to the player
+        _rigidbody2D.velocity = new Vector2(horizontalMovement * speed, _rigidbody2D.velocity.y);
+
+        // Animate Movement
+        if (horizontalMovement != 0 && _isOnGround)
+        {
+            animator.SetBool(Constants.WalkBool, true);
+        }
+        else
+        {
+            animator.SetBool(Constants.WalkBool, false);
+        }
+
+        // Rotate
+        if(horizontalMovement > 0)
+            transform.localScale = new Vector3(1, 1, 1);
+        else if(horizontalMovement < 0)
+            transform.localScale = new Vector3(-1, 1, 1);
     }
 
     private void Move()

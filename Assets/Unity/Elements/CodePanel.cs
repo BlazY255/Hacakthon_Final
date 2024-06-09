@@ -9,6 +9,8 @@ public class CodePanel : MonoBehaviour
     public TMP_Text description;
 
     public bool isLaserPc;
+    public bool isLastPc;
+    public int index;
     
     public List<PlatformData> platformDataList;
 
@@ -59,10 +61,13 @@ public class CodePanel : MonoBehaviour
 
         foreach (var data in platformDataList)
         {
-            if (data.XValues.Contains(xValue) && data.YValues.Contains(yValue))
+            if (data.PlatformId == index)
             {
-                GameManager.instance.levelManager.SetPlatformActive(data.PlatformId, true, isLaserPc);
-                return;
+                if (data.XValues.Contains(xValue) && data.YValues.Contains(yValue))
+                {
+                    GameManager.instance.levelManager.SetPlatformActive(data.PlatformId, true, isLaserPc,isLastPc);
+                    return;
+                }
             }
         }
     }

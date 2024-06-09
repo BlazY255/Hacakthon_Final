@@ -2525,6 +2525,8 @@ MonoBehaviour:
   pickupCounter: {fileID: 2019687236}
   useButton: {fileID: 329571353}
   currentInteractableType: 0
+  deathPanel: {fileID: 0}
+  inGamePanel: {fileID: 0}
   pcPanel: {fileID: 1685174971}
 --- !u!114 &1134176308
 MonoBehaviour:
@@ -2954,6 +2956,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIManager: {fileID: 1134176307}
+  levelManager: {fileID: 0}
+  PlayerMovementController: {fileID: 0}
   canInteract: 1
 --- !u!1 &1405443878
 GameObject:
@@ -3543,7 +3547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.6392157}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4115,6 +4119,9 @@ MonoBehaviour:
   screen: {fileID: 974828470}
   text: {fileID: 1902462672}
   screenOnButton: {fileID: 1405443878}
+  codePanel: {fileID: 0}
+  currentId: 0
+  isLaserPc: 0
   timeToColor: 0.25
 --- !u!1 &1689047212
 GameObject:
@@ -5297,7 +5304,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2036885142
 RectTransform:
   m_ObjectHideFlags: 0
